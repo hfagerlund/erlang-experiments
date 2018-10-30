@@ -1,6 +1,10 @@
+% hello.erl
+
 -module(hello).
+-import(io,[format/1]).
 -export([hello/0]).
 
 hello() ->
-	io:format("Hello~n"),
-	io:format("World~n").
+	format("Hello~n"),
+        format("again~n"),
+	format("World~n").
