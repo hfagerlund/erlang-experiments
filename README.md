@@ -16,7 +16,7 @@ or
 $ cd src
 $ erl
 1> c(hello).
-2> hello:hello().
+2> hello:hallo().
 3> halt().
 
 ```
