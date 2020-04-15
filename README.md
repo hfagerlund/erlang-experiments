@@ -16,7 +16,7 @@ or
 $ cd src
 $ erl
 1> c(hello).
-2> hello:hallo().
+2> hello:hallo("there").
 3> halt().
 
 ```
@@ -30,7 +30,7 @@ $ git clone https://github.com/hfagerlund/erlang-experiments.git
 $ sudo docker run -it -v <absolute-path-to-git-clone-directory>/erlang-experiments/src:/app erlang
 1> cd("app").
 2> c(hello).
-3> hello:hallo().
+3> hello:hallo("Everyone").
 4> halt().
 
 ```

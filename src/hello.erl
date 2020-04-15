@@ -1,10 +1,11 @@
 % hello.erl
 
 -module(hello).
--import(io,[format/1]).
--export([hallo/0]).
+-import(string,[concat/2]).
+-export([hallo/1]).
 
-hallo() ->
-	format("Hello~n"),
-        format("again~n"),
-	format("World~n").
+hallo(N) ->
+	X = "Hello ",
+        Y = concat(X, N),
+        io:fwrite([Y]),
+        io:fwrite("~n").
