@@ -33,6 +33,10 @@ $ sudo docker run -it -v <absolute-path-to-git-clone-directory>/erlang-experimen
 3> hello:hallo("Everyone").
 4> halt().
 
+# another example
+1> cd("app").
+2> c(add_up_shopping).
+3> add_up_shopping:run().
 ```
 
 ## License
