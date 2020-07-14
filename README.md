@@ -4,7 +4,7 @@
 
 ## Requirements
 
-* Erlang (OTP) version: R15B
+* Erlang version: R15B
 
 or
 
@@ -37,6 +37,14 @@ $ sudo docker run -it -v <absolute-path-to-git-clone-directory>/erlang-experimen
 1> cd("app").
 2> c(add_up_shopping).
 3> add_up_shopping:run().
+
+# run (EUnit) tests
+$ sudo docker run -it -v <absolute-path-to-git-clone-directory>/erlang-experiments/:/app erlang
+1> cd("app").
+2> make:all([load]).
+3> eunit:test(hello).
+4> eunit:test(add_up_shopping).
+5> halt().
 ```
 
 ## License
