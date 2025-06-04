@@ -5,6 +5,7 @@
 /.github
 .editorconfig
 .gitattributes
+docker-compose*.yml
 Dockerfile*
 Emakefile
 README.md

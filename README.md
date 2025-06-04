@@ -177,7 +177,41 @@ $ sudo docker run --name my-test-erlang-container my-erlang-app
 Eshell V12.3.2.17  (abort with ^G)
 1> *** Terminating erlang (nonode@nohost)
 ```
+- - -
+#### docker-compose:
 
+* Using `docker-compose.yml` (below) -
+```
+version: "3.3"
+services:
+  ####################################################
+  # Web app
+  ####################################################
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    volumes:
+      - ..:/workspace
+    # keep container running (for testing)
+    command: "sleep infinity"
+  ####################################################
+  # another service
+  ####################################################
+  # rebar:
+  # ...
+```
+
+Run docker-compose.yml as shown below:<br>
+```
+# start Docker
+$ sudo systemctl start docker
+# create and start the app
+$ sudo docker compose up
+```
+- - -
 ## License
 Copyright (c) 2018 Heini Fagerlund. Licensed under the [MIT License](https://github.com/hfagerlund/erlang-experiments/blob/master/LICENSE).
 
