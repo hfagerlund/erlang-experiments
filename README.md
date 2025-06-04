@@ -1,6 +1,7 @@
 # erlang-experiments
 
-- - -
+Creating a portable Erlang app development environment on Linux [using Docker] and adding [development containers (dev containers)].
+
 <table>
 <tr>
 <td> hello.erl </td> <td> add_up_shopping.erl </td>
@@ -230,6 +231,8 @@ For example:<br>
     "service": "web"
 }
 ```
+> [!NOTE]
+> Value of *'workspaceFolder'* should [match this line] in `docker-compose.yml`.
 
 #### Using Dev Container with VS Code
 1. **Install VS Code extension**:<br>
@@ -269,5 +272,9 @@ Copyright (c) 2018 Heini Fagerlund. Licensed under the [MIT License](https://git
 
 <!-- References -->
 [command]: https://github.com/hfagerlund/erlang-experiments/blob/29a853b0e62e1115830e68edb172075022a172cf/Dockerfile#L9
-[open specification]: https://containers.dev/
+[development containers (dev containers)]: https://containers.dev/
 [extensions marketplace]: https://marketplace.visualstudio.com/search?target=VSCode&category=Extension%20Packs&sortBy=Installs
+[match this line]: https://github.com/hfagerlund/erlang-experiments/blob/71c50843eca7c9f9e8258a8f1c3c4330e819f3dd/docker-compose.yml#L12
+[open specification]: https://containers.dev/
+[using Docker]: https://www.docker.com/
+
