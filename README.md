@@ -146,7 +146,7 @@ $ sudo docker build -t my-erlang-app .
 $ sudo docker run --name my-test-erlang-container my-erlang-app
 ```
 
-Docker creates a container and executes the command listed in the image's Dockerfile (equivalent to `hello:hallo("there")`).
+Docker creates a container and executes the [command] listed in the image's Dockerfile (equivalent to `hello:hallo("there")`).
 
 output:<br>
 ```
@@ -181,3 +181,5 @@ Eshell V12.3.2.17  (abort with ^G)
 ## License
 Copyright (c) 2018 Heini Fagerlund. Licensed under the [MIT License](https://github.com/hfagerlund/erlang-experiments/blob/master/LICENSE).
 
+<!-- References -->
+[command]: https://github.com/hfagerlund/erlang-experiments/blob/29a853b0e62e1115830e68edb172075022a172cf/Dockerfile#L9
