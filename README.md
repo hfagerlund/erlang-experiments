@@ -58,18 +58,20 @@ ok
 
 *Fig. 1 - Eshell outputs of demo Erlang programs (included in [/src] directory)*
 - - -
-
-## Requirements
-
-* Erlang version: R15B
-
-or
-
-* Docker
-
+## Table of contents
+* [Local Installation]
+* [Docker]
+  * [Docker CLI]
+  * [Dockerfile]
+  * [docker-compose]
+* [Dev Container]
+  * [VS Code]
+- - -
 ## Usage
 
 ### Local Installation
+*(Erlang version: R15B)*
+
 Using the **Erlang shell** (`erl`):
 
 ```
@@ -82,6 +84,7 @@ $ erl
 ```
 
 ### Docker
+*(Docker version 24.0.2)*
 * Using Docker container's **interactive shell** (`-it`):
 
 ```
@@ -268,13 +271,26 @@ Open Visual Studio Code (with extension installed):
 
 - - -
 ## License
-Copyright (c) 2018 Heini Fagerlund. Licensed under the [MIT License](https://github.com/hfagerlund/erlang-experiments/blob/master/LICENSE).
+Copyright (c) 2018 Heini Fagerlund. Licensed under the [MIT License].
 
 <!-- References -->
+<!-- internal -->
+[Local Installation]: #local-installation
+[Docker]: #docker
+[Docker CLI]: #docker
+[Dockerfile]: #dockerfile
+[docker-compose]: #docker-compose
+[Dev Container]: #dev-container
+[VS Code]: #using-dev-container-with-vs-code
+
 [command]: https://github.com/hfagerlund/erlang-experiments/blob/29a853b0e62e1115830e68edb172075022a172cf/Dockerfile#L9
+[match this line]: https://github.com/hfagerlund/erlang-experiments/blob/71c50843eca7c9f9e8258a8f1c3c4330e819f3dd/docker-compose.yml#L12
+[MIT License]: https://github.com/hfagerlund/erlang-experiments/blob/master/LICENSE
+[/src]: https://github.com/hfagerlund/erlang-experiments/tree/master/src
+
+<!-- external -->
 [development containers (dev containers)]: https://containers.dev/
 [extensions marketplace]: https://marketplace.visualstudio.com/search?target=VSCode&category=Extension%20Packs&sortBy=Installs
-[match this line]: https://github.com/hfagerlund/erlang-experiments/blob/71c50843eca7c9f9e8258a8f1c3c4330e819f3dd/docker-compose.yml#L12
 [open specification]: https://containers.dev/
 [using Docker]: https://www.docker.com/
 
