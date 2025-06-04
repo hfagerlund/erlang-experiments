@@ -1,0 +1,15 @@
+.git
+.dockerignore
+.gitignore
+.*ignore
+/.github
+.editorconfig
+.gitattributes
+Dockerfile*
+Emakefile
+README.md
+/doc
+/ebin
+/include
+/priv
+/test

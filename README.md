@@ -68,6 +68,9 @@ or
 
 ## Usage
 
+### Local Installation
+Using the **Erlang shell** (`erl`):
+
 ```
 $ cd src
 $ erl
@@ -77,7 +80,8 @@ $ erl
 
 ```
 
-### Using Docker
+### Docker
+* Using Docker container's **interactive shell** (`-it`):
 
 ```
 $ sudo systemctl start docker
@@ -93,6 +97,7 @@ $ sudo docker run -it -v <absolute-path-to-git-clone-directory>/erlang-experimen
 1> cd("app").
 2> c(add_up_shopping).
 3> add_up_shopping:run().
+4> halt().
 
 # run (EUnit) tests
 $ sudo docker run -it -v <absolute-path-to-git-clone-directory>/erlang-experiments/:/app erlang
@@ -101,6 +106,76 @@ $ sudo docker run -it -v <absolute-path-to-git-clone-directory>/erlang-experimen
 3> eunit:test(hello).
 4> eunit:test(add_up_shopping).
 5> halt().
+```
+- - -
+
+#### Dockerfile:
+
+* Using `Dockerfile` (below) -
+```
+# Updated official Erlang image from Docker Hub
+FROM erlang:24-alpine
+
+# Set working directory
+RUN mkdir /my-erlang-app
+WORKDIR /my-erlang-app
+
+# OPTIONAL: Uncomment the line below to keep container running indefinitely (for testing, debugging)
+## CMD ["sleep", "infinity"]
+
+# Copy application source code
+COPY . .
+
+# compile small Erlang program 'hello.erl' (to produce a BEAM file that can execute on the Erlang VM):
+RUN erlc ./src/hello.erl
+
+# run sequential Erlang program as a common script, and exit
+RUN erl -noshell -run hello hallo there -s init stop
+## ...where:
+##    'hello' = module,
+##    'hallo' = function,
+##    'there' = argument (passed to the program)
+```
+
+Run the following in the **same directory** as `Dockerfile`:
+```
+# build Docker image
+$ sudo docker build -t my-erlang-app .
+
+# launch a new Docker container based on the image
+$ sudo docker run --name my-test-erlang-container my-erlang-app
+```
+
+Docker creates a container and executes the command listed in the image's Dockerfile (equivalent to `hello:hallo("there")`).
+
+output:<br>
+```
+$ sudo docker build -t my-erlang-app .
+# ...
+[+] Building 16.4s (11/11) FINISHED
+ => [internal] load build definition from Dockerfile                                                                                                     0.5s
+ => => transferring dockerfile: 199B                                                                                                                     0.0s
+ => [internal] load .dockerignore                                                                                                                        0.4s
+ => => transferring context: 2B                                                                                                                          0.0s
+ => [internal] load metadata for docker.io/library/erlang:24-alpine                                                                                      2.4s
+ => [1/6] FROM docker.io/library/erlang:24-alpine@sha256:xxx                                1.6s
+ => => resolve docker.io/library/erlang:24-alpine@sha256:xxx                                1.6s
+ => [internal] load build context                                                                                                                        0.2s
+ => => transferring context: 56.72kB                                                                                                                     0.1s
+ => [2/6] RUN mkdir /my-erlang-app                                                                                                                0.0s
+ => [3/6] WORKDIR /my-erlang-app                                                                                                                  0.0s
+ => [4/6] COPY . .                                                                                                                                       1.0s
+ => [5/6] RUN erlc ./src/hello.erl                                                                                                                       3.0s
+ => [6/6] RUN erl -noshell -run hello hallo there -s init stop                                                                                           4.1s
+# '=> => # Hello there' briefly flashes in terminal
+ => exporting to image                                                                                                                                   1.9s
+ => => exporting layers                                                                                                                                  1.8s
+ => => writing image sha256:xxx                                                             0.0s
+ => => naming to docker.io/library/my-erlang-app
+
+$ sudo docker run --name my-test-erlang-container my-erlang-app
+Eshell V12.3.2.17  (abort with ^G)
+1> *** Terminating erlang (nonode@nohost)
 ```
 
 ## License
