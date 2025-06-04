@@ -1,6 +1,62 @@
 # erlang-experiments
 
 - - -
+<table>
+<tr>
+<td> hello.erl </td> <td> add_up_shopping.erl </td>
+</tr>
+
+<tr>
+<td>
+output:<br>
+Displays the customized greeting 'Hello {name}', where
+{name} is input by the user.
+</td>
+<td>
+output:<br>
+Calculates subtotal for each item in shopping list (eg. milk)
+by multiplying the number of items with its per unit price.
+</td>
+</tr>
+
+<tr>
+<td>
+
+```
+
+1> cd("app").
+/app
+ok
+2> c(hello).
+{ok,hello}
+3> hello:hallo("Everyone").
+Hello Everyone
+ok
+4> halt().
+
+```
+</td>
+<td>
+
+```
+
+1> cd("app").
+/app
+ok
+2> c(add_up_shopping).
+{ok,add_up_shopping}
+3> add_up_shopping:run().
+[{milk,5.99},{butter,13.98},{flour,11.97}]
+ok
+4> halt().
+
+```
+</td>
+</tr>
+</table>
+
+*Fig. 1 - Eshell outputs of demo Erlang programs (included in [/src] directory)*
+- - -
 
 ## Requirements
 
