@@ -9,6 +9,7 @@ docker-compose*.yml
 Dockerfile*
 Emakefile
 README.md
+/.devcontainer
 /doc
 /ebin
 /include

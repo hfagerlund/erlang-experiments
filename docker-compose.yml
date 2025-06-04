@@ -7,6 +7,8 @@ services:
     ports:
       - "80:80"
     volumes:
+      # where VSCode looks for project's source code
+      # same as 'workspaceFolder' in .devcontainer/devcontainer.json
       - ..:/workspace
     # keep container running
     command: "sleep infinity"

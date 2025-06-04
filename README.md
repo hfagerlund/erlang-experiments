@@ -194,6 +194,8 @@ services:
     ports:
       - "80:80"
     volumes:
+      # where VSCode looks for project's source code
+      # same as 'workspaceFolder' in .devcontainer/devcontainer.json
       - ..:/workspace
     # keep container running (for testing)
     command: "sleep infinity"
@@ -212,8 +214,60 @@ $ sudo systemctl start docker
 $ sudo docker compose up
 ```
 - - -
+### Dev Container
+
+Dev Containers are an [open specification], and can be used without Visual Studio Code (VS Code), and/or without Docker.
+
+A '**/.devcontainer**' directory, and '**/.devcontainer/devcontainer.json**' file are required.
+
+For example:<br>
+`devcontainer.json` (below) -
+```
+{
+    "name": "Erlang dev container",
+    "dockerComposeFile": "../docker-compose.yml",
+    "workspaceFolder": "/workspace",
+    "service": "web"
+}
+```
+
+#### Using Dev Container with VS Code
+1. **Install VS Code extension**:<br>
+Install '**Visual Studio Code Remote Development Extension Pack**' in Visual Studio Code from [extensions marketplace].
+
+2. **User Settings**:<br>
+Open Visual Studio Code (with extension installed):
+  * Ctrl + Shift + P > *type*: open settings > select '`Preferences: Open User Settings (JSON)`' > opens 'settings.json' file > save file in default location
+
+  For example:<br>
+`settings.json` (below) -
+```
+$ cat ~/.config/Code/User/settings.json
+{
+    "otherhost": "/foobar"
+}
+```
+
+3. **Start Docker**:<br>
+Make sure Docker is running, and correct **file permissions** are granted:
+```
+$ sudo systemctl start docker
+$ sudo chown -R $(whoami) ~/.docker
+```
+
+4. **Run dev container**:<br>
+Open Visual Studio Code (with extension installed):
+  * Open **root directory** of project repo (`$ git clone https://github.com/hfagerlund/erlang-experiments.git`))
+  * Ctrl + Shift + P > select '`Dev Containers: run in container`' command
+
+> [!TIP]
+> Use VS Code's `Dev Containers: Rebuild Container` command for your container to update if contents of the `.devcontainer` directory have been modified.
+
+- - -
 ## License
 Copyright (c) 2018 Heini Fagerlund. Licensed under the [MIT License](https://github.com/hfagerlund/erlang-experiments/blob/master/LICENSE).
 
 <!-- References -->
 [command]: https://github.com/hfagerlund/erlang-experiments/blob/29a853b0e62e1115830e68edb172075022a172cf/Dockerfile#L9
+[open specification]: https://containers.dev/
+[extensions marketplace]: https://marketplace.visualstudio.com/search?target=VSCode&category=Extension%20Packs&sortBy=Installs
