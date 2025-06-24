@@ -6,12 +6,7 @@
 .editorconfig
 .gitattributes
 docker-compose*.yml
-Dockerfile*
-Emakefile
 README.md
+rebar
+_build
 /.devcontainer
-/doc
-/ebin
-/include
-/priv
-/test

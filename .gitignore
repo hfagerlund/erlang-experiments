@@ -1,6 +1,21 @@
 *~
 !.gitignore
 
+.rebar
+.rebar3
+rebar3
+_build
+_checkouts
+_vendor
+log
+logs
+*.swp
+*.swo
+.erlang.cookie
+.idea
+*.iml
+rebar3.crashdump
+
 # https://github.com/github/gitignore/blob/master/Erlang.gitignore
 .eunit
 deps
@@ -12,4 +27,3 @@ ebin/*.beam
 rel/example_project
 .concrete/DEV_MODE
 .rebar
-
